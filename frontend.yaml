@@ -38,7 +38,7 @@
       src: expance.conf
       dest: /etc/systemd/system/backend.service
   
-   - name: ngnix restart
+  - name: ngnix restart
     ansible.builtin.service:
       state: restart
       name: nginx
