@@ -36,7 +36,7 @@
       src: /tmp/backend.zip
       dest: /app
 
-  - name: Force Install "coffee-script" node.js package.
+  - name: npm Install node.js package.
     community.general.npm:
       name: npm
       state: present
