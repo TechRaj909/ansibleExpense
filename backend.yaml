@@ -60,7 +60,14 @@
       login_user: root
       login_password: ExpenseApp@1
       target: /app/schema/backend.sql
-  
+
+  - name: Install MySQL libraries
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    # - cryptography
+    - PyMySQL  
 
   
 
