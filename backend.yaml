@@ -53,6 +53,13 @@
       state: restarted
       enabled: true
 
+  - name: mysql install
+    community.mysql.mysql_db:
+      state: import
+      name: all
+      login_user: root
+      login_password: ExpenseApp@1
+      target: /app/schema/backend.sql
   
 
   
