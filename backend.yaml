@@ -8,6 +8,14 @@
   - name: disable node
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
+  - name: Install MySQL libraries
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    # - cryptography
+    - PyMySQL 
+
   - name: install node 
     ansible.builtin.package:
       name: nodejs
@@ -61,13 +69,7 @@
       login_password: ExpenseApp@1
       target: /app/schema/backend.sql
 
-  - name: Install MySQL libraries
-    ansible.builtin.pip:
-      name: "{{ item }}"
-      executable: pip3.9
-    loop:
-    # - cryptography
-    - PyMySQL  
+ 
 
   
 
