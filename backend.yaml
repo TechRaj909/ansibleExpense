@@ -39,8 +39,20 @@
 
   - name: npm Install node.js package.
     community.general.npm:
-      name: npm
-      state: present
+      path: /app
+  
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
+  - name: demon reload
+    ansible.builtin.systemd_service:
+      name: backend
+      daemon_reload: true
+      state: restarted
+      enabled: true
+
   
 
   
