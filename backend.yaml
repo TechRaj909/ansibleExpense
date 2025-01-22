@@ -54,7 +54,7 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-  - name: mysql install
+  - name: import mysql
     community.mysql.mysql_db:
       state: import
       name: all
