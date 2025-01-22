@@ -54,13 +54,6 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-  - name: demon reload
-    ansible.builtin.systemd_service:
-      name: backend
-      daemon_reload: true
-      state: restarted
-      enabled: true
-
   - name: mysql install
     community.mysql.mysql_db:
       state: import
@@ -68,6 +61,13 @@
       login_user: root
       login_password: ExpenseApp@1
       target: /app/schema/backend.sql
+
+  - name: demon reload
+    ansible.builtin.systemd_service:
+      name: backend
+      daemon_reload: true
+      state: restarted
+      enabled: true    
 
  
 
