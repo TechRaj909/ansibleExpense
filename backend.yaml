@@ -6,20 +6,15 @@
     ansible.builtin.command: dnf module disable nodejs -y
 
   - name: disable node
-    ansible.builtin.command: dnf module enable nodejs:20 -y
+    ansible.builtin.command: dnf module enable nodejs:20 -y 
 
-  - name: Install MySQL libraries
-    ansible.builtin.pip:
-      name: "{{ item }}"
-      executable: pip3.9
-    loop:
-    # - cryptography
-    - PyMySQL 
-
-  - name: install node 
+  - name: install nodejs
     ansible.builtin.package:
-      name: nodejs
+      name: "{{ item }}"
       state: present
+    loop:
+    - nodejs
+    - mysql
   
   - name: create user
     ansible.builtin.user:
@@ -53,6 +48,14 @@
     ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service
+
+  - name: Install MySQL libraries
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    # - cryptography
+    - PyMySQL
 
   - name: import mysql
     community.mysql.mysql_db:
