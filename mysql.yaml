@@ -8,7 +8,7 @@
       state: installed
 
   - name: start mysql server
-    ansible.builtin.package:
+    ansible.builtin.service:
       name: mysql-server
       state: restarted
       enabled: yes
