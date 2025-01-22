@@ -20,9 +20,6 @@
     ansible.builtin.user:
       name: expense
 
-  - name: create user
-    ansible.builtin.user:
-      name: expense
 
   - name: create dir
     ansible.builtin.file:
@@ -34,7 +31,7 @@
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
       dest: /tmp/backend.zip
 
-  - name: Unarchive a file that is already on the remote machine
+  - name: Unarchive a file Unzip
     ansible.builtin.unarchive:
       src: /tmp/backend.zip
       dest: /app
